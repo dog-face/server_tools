@@ -6,7 +6,7 @@ import logging
 import base64
 
 
-parser = argparse.ArgumentParser(description='Send mail from admin@mznco.net')
+parser = argparse.ArgumentParser(description='Send mail from address@example.com')
 parser.add_argument('TO', help='Email will be sent to this address')
 parser.add_argument('SUBJECT', help='Specify a subject line')
 parser.add_argument('BODY', help='Specify the Body of the email', nargs='*')
@@ -16,14 +16,14 @@ logging.basicConfig(filename='/var/log/mzmail.log', level=logging.DEBUG) # /var/
 
 logging.info(str(sys.argv))
 
-email_from = 'admin@mznco.net'
+email_from = 'address@example.com'
 
 email_to = [args.TO]
 subject = args.SUBJECT
 body = " ".join(args.BODY)
 
-smtp_server = 'mail.mznco.net'
-smtp_login = 'admin@mznco.net'
+smtp_server = 'smtp.example.com'
+smtp_login = 'address@example.com'
 smtp_pass = 'PASSWORD'
 
 msg = ("From: %s\r\nTo: %s\r\nSubject: %s\r\n\r\n" % (email_from, ", ".join(email_to), subject) )
